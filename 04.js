@@ -1,10 +1,14 @@
 /*
 
-Gör en funktion: get_average_sum. Funktionen ska ta emot en array som parameter och räkna ut genomsnittet och summan av talen du skickade in och returnera de två svaren till den som anropar metoden. Du ska returnera svaren som ett objekt med egenskaperna average och sum. Du ska inte skriva någon klass utan bara returnera ett "fristående" objekt.
+Gör en funktion: get_average_sum. Funktionen ska ta emot en array som parameter och räkna ut genomsnittet 
+och summan av talen du skickade in och returnera de två svaren till den som anropar metoden. 
+Du ska returnera svaren som ett objekt med egenskaperna average och sum. Du ska inte skriva någon klass 
+utan bara returnera ett "fristående" objekt.
 
 Du måste använda en reduce-funktion.
 
-Anropa get_average_sum och skicka med en array med 2 till 10 heltal. Kontrollera antalet tal och returnera false om antalet tal är fel eller om ett värde inte är ett heltal.
+Anropa get_average_sum och skicka med en array med 2 till 10 heltal. Kontrollera antalet tal och 
+returnera false om antalet tal är fel eller om ett värde inte är ett heltal.
 
 Skriv kod som anropar get_average_sum, sparar resultatet i en variabel och skriver ut båda värdena.
 
@@ -18,7 +22,26 @@ Exempel på värden och deras svar:
 
 */
 
-function get_average_sum() {
-    
-}
+function get_average_sum(array) {
+    let sum = array.reduce((total, currVal)  => {
+        return total+currVal;
+    });
 
+    //om kraven uppfylls returneras genomsnitt och summa, annars false
+    if(sum%1===0 && array.length>=2 && array.length<=10){
+        let average = sum/array.length;
+        return {average, sum};
+    }
+
+    else{
+        return false;
+    }
+}
+let array = [-1, 2, 18];
+let test = get_average_sum(array); 
+
+//Om kraven uppfylls skrivs text ut, annars skrivs "false" ut
+if(test){
+    console.log(array + " ger average=" + test.average + " och sum=" + test.sum);
+}
+else{console.log(test);}
